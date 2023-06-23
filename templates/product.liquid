@@ -2,17 +2,120 @@
 
 {% assign product = product %}
 
-<div class="product__container">
-  <div class="product__image">
-    <img src="{{ product.images.first.src | img_url: '800x800' }}" alt="{{ product.title }}" loading="lazy">
+<main class="product__main__wrapper">
+  <div class="product__container">
+    <div class="product__content">
+      <div class="product__image">
+        <img src="{{ product.images.first.src | img_url: '800x800' }}" alt="{{ product.title }}" loading="lazy">
+      </div>
+      <div class="product__info">
+        <h1 class="product__title">{{ product.title }}</h1>
+        <div class="product__rating">
+          <ul>
+            <img src="{{ 'star.svg' | asset_url alt='star' }}" alt="{{ product.title }}" loading="lazy">
+            <img src="{{ 'star.svg' | asset_url alt='star' }}" alt="{{ product.title }}" loading="lazy">
+            <img src="{{ 'star.svg' | asset_url alt='star' }}" alt="{{ product.title }}" loading="lazy">
+            <img src="{{ 'star.svg' | asset_url alt='star' }}" alt="{{ product.title }}" loading="lazy">
+            <img src="{{ 'star.svg' | asset_url alt='star' }}" alt="{{ product.title }}" loading="lazy">
+          </ul>
+          <span class="product__number__of__reviews">3054 Reviews</span>
+        </div>
+
+        <div class="product__description">{{ product.description }}</div>
+        <div class="product__table">
+          <div class="product__table__header" style="background-color: {{ product.variants.first.title }}">
+            <div class="product__table__header__left">
+              <strong>Subscription</strong>
+              <span class="product__table__discount__badge">30% OFF</span>
+            </div>
+
+            <div class="product__table__header__right">
+              <span class="product__old__price">{{ product.compare_at_price | money }}</span>
+              <span class="product__discount__price">{{ product.price | money }}</span>
+            </div>
+          </div>
+
+          <div class="product__table__content">
+            <ul class="product__table__items__list">
+              <li class="product__table__table__item">
+                <div class="product__check__icon__background" style="background-color:{{ product.variants.first.title }}">
+                  <img src="{{ 'check-icon.svg' | asset_url alt='check icon' }}" alt="check icon" loading="lazy">
+                </div>
+                <span>24/7 video vet support</span>
+              </li>
+
+              <li class="product__table__table__item">
+                <div class="product__check__icon__background" style="background-color:{{ product.variants.first.title }}">
+                  <img src="{{ 'check-icon.svg' | asset_url alt='check icon' }}" alt="check icon" loading="lazy">
+                </div>
+                <span>30% off first order, then 20% off for life</span>
+              </li>
+
+              <li class="product__table__table__item">
+                <div class="product__check__icon__background" style="background-color:{{ product.variants.first.title }}">
+                  <img src="{{ 'check-icon.svg' | asset_url alt='check icon' }}" alt="check icon" loading="lazy">
+                </div>
+                <span>Health tracking and recommendations</span>
+              </li>
+
+              <li class="product__table__table__item">
+                <div class="product__check__icon__background" style="background-color:{{ product.variants.first.title }}">
+                  <img src="{{ 'check-icon.svg' | asset_url alt='check icon' }}" alt="check icon" loading="lazy">
+                </div>
+                <span>Free delivery monthly and exclusive rewards</span>
+              </li>
+
+              <li class="product__table__table__item">
+                <div class="product__check__icon__background" style="background-color:{{ product.variants.first.title }}">
+                  <img src="{{ 'check-icon.svg' | asset_url alt='check icon' }}" alt="check icon" loading="lazy">
+                </div>
+                <span>AI assistant, personalised health insights and vet tips</span>
+              </li>
+
+              <li class="product__table__table__item">
+                <div class="product__check__icon__background" style="background-color:{{ product.variants.first.title }}">
+                  <img src="{{ 'check-icon.svg' | asset_url alt='check icon' }}" alt="check icon" loading="lazy">
+                </div>
+                <span>100% money back guarantee</span>
+              </li>
+            </ul>
+            <footer class="product__table__footer">
+              <form action="/#" method="post">
+                <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+                <button type="submit" class="product__subscription__button">
+                  Subscribe . <strong>{{ product.price | money }}</strong>
+                </button>
+              </form>
+              <p class="product__first__order__warning">
+                After first order you will pay £23.40/month. Cancel, pause or change anytime.
+              </p>
+            </footer>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product__upselling__container">
+      <div class="product__upselling__container__blank__left">
+      </div>
+      <div class="product__upselling__list__wrapper">
+        <h2>Frequently bought together</h2>
+        <ul class="product__upselling__list">
+          {% if product.tags contains 'upsell' %}
+            {% for product in collections.all.products %}
+              <li class="product__upselling__item">
+                <a class="product__upselling__link" href="{{ upsell_product.url }}">
+                  <img src="{{ upsell_product.images.first.src | img_url: '300x300' }}" alt="{{ product.title }}" loading="lazy">
+                  <footer class="product__upselling__item__footer">
+                    <span>{{ upsell_product.title }}</span>
+                    <span>{{ upsell_product.compare_at_price | money }}</span>
+                  </footer>
+                </a>
+              </li>
+            {% endfor %}
+          {% endif %}
+        </ul>
+      </div>
+    </div>
   </div>
-  <div class="product__info">
-    <h1>{{ product.title }}</h1>
-    <p class="product__price">{{ product.price | money }}</p>
-    <p class="product__description">{{ product.description }}</p>
-    <form action="/#" method="post">
-      <input type="hidden" name="id" value="{{ product.variants.first.id }}">
-      <button type="submit" class="btn btn-primary btn-block">Add to Cart</button>
-    </form>
-  </div>
-</div>
+</main>
