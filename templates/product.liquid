@@ -95,27 +95,29 @@
       </div>
     </div>
 
-    <div class="product__upselling__container">
-      <div class="product__upselling__container__blank__left">
-      </div>
-      <div class="product__upselling__list__wrapper">
-        <h2>Frequently bought together</h2>
-        <ul class="product__upselling__list">
-          {% if product.tags contains 'upsell' %}
-            {% for product in collections.all.products %}
-              <li class="product__upselling__item">
-                <a class="product__upselling__link" href="{{ upsell_product.url }}">
-                  <img src="{{ upsell_product.images.first.src | img_url: '300x300' }}" alt="{{ product.title }}" loading="lazy">
-                  <footer class="product__upselling__item__footer">
-                    <span>{{ upsell_product.title }}</span>
-                    <span>{{ upsell_product.compare_at_price | money }}</span>
-                  </footer>
-                </a>
-              </li>
+    {% if product.tags contains 'upsell' %}
+      <div class="product__upselling__container">
+        <div class="product__upselling__container__blank__left">
+        </div>
+        <div class="product__upselling__list__wrapper">
+          <h2>Frequently bought together</h2>
+          <ul class="product__upselling__list" style="grid-template-columns: repeat({{ collections.all.products.size | minus: 1 }}, 1fr);">
+            {% for upsell_product in collections.all.products %}
+              {% unless upsell_product.id == product.id %}
+                <li class="product__upselling__item">
+                  <a class="product__upselling__link" href="{{ upsell_product.url }}">
+                    <img src="{{ upsell_product.images.first.src | img_url: '300x300' }}" alt="{{ product.title }}" loading="lazy">
+                    <footer class="product__upselling__item__footer">
+                      <span>{{ upsell_product.title }}</span>
+                      <span>{{ upsell_product.compare_at_price | money }}</span>
+                    </footer>
+                  </a>
+                </li>
+              {% endunless %}
             {% endfor %}
-          {% endif %}
-        </ul>
+          </ul>
+        </div>
       </div>
-    </div>
+    {% endif %}
   </div>
 </main>

@@ -190,7 +190,6 @@
 .product__subscription__button {
   height: 44px;
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
   padding: 12px 24px;
@@ -233,7 +232,6 @@
   display: flex;
   flex-direction: column;
   overflow-x: auto;
-
 }
 
 .product__upselling__list__wrapper h2 {
@@ -248,14 +246,20 @@
   margin: 0;
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  flex-grow: 1;
   gap: 32px;
+  flex-grow: 1;
   overflow-y: hidden;
   overflow-x: auto;
+  white-space: nowrap;
+  grid-auto-flow: column;
 }
 
 .product__upselling__link {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
   text-decoration: none;
   text-align: center;
   font-family: "Silka Medium", sans-serif;
@@ -265,9 +269,7 @@
 
 .product__upselling__item {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+  width: 178px;
   height: 100%;
   gap: 16px;
 }
@@ -294,10 +296,6 @@
     font-size: 34px;
   }
 
-  .product__upselling__item {
-    width: 132px;
-  }
-
   .product__table__discount__badge {
     display: none;
   }
@@ -311,13 +309,20 @@
     text-align: center;
   }
 
+  .product__upselling__list {
+    gap: 20px;
+  }
+
+  .product__upselling__item {
+    width: 132px;
+  }
+
 }
 
 @media only screen and (max-width: 768px) {
   .product__container {
     display: flex;
     flex-direction: column;
-    gap: 22px;
     padding: 0;
   }
 
@@ -354,12 +359,14 @@
     display: none;
   }
 
-  .product__upselling__list {
-    gap: 20px;
-  }
-
   .product__upselling__list__wrapper h2 {
     font-size: 26px;
+  }
+}
+
+@media only screen and (min-width: 641px) and (max-width: 768px){
+  .product__upselling__item {
+    width: 220px;
   }
 }
 
@@ -375,6 +382,10 @@
     flex-direction: column;
   }
 
+  .product__subscription__button {
+    align-self: center;
+  }
+
   .product__upselling__container {
     width: 100%;
     display: grid;
@@ -386,14 +397,17 @@
     display: none;
   }
 
-  .product__subscription__button {
-    align-self: center;
+  .product__upselling__item {
+    width: 216px;
   }
+
 }
 
-@media only screen and (min-width: 990px) and (max-width: 1439px) {
+@media only screen and (min-width: 991px) and (max-width: 1439px) {
   .product__container {
     display: flex;
     padding: 20px;
   }
 }
+
+
