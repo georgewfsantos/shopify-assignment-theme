@@ -1,6 +1,6 @@
 {% assign compare_price_exists = price_compare %}
 
-<div class="card">
+{% comment %} <div class="card">
   <div class="card__image">
     <a href="{{ title_link }}">
       <img src="{{ featured_image.src | img_url: '300x300' }}" alt="{{ featured_image.alt | escape }}">
@@ -14,4 +14,6 @@
       <span class="card__price--current">{{ price | money }}</span>
     </div>
   </div>
-</div>
+</div> {% endcomment %}
+
+

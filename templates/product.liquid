@@ -109,7 +109,7 @@
                     <img src="{{ upsell_product.images.first.src | img_url: '300x300' }}" alt="{{ product.title }}" loading="lazy">
                     <footer class="product__upselling__item__footer">
                       <span>{{ upsell_product.title }}</span>
-                      <span>{{ upsell_product.compare_at_price | money }}</span>
+                      <span>{{ upsell_product.price | money }}</span>
                     </footer>
                   </a>
                 </li>

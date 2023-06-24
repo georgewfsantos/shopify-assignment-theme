@@ -1,12 +1,10 @@
-.card {
+/* .card {
   position: relative;
-  border: 1px solid #ddd;
-  border-radius: 4px;
   overflow: hidden;
-  height: 280px;
   display: flex;
   flex-direction: column;
-  flex: 1
+  flex: 1;
+  border: 1px solid red;
 }
 
 .card__image {
@@ -16,7 +14,9 @@
 .card__image img {
   display: block;
   width: 100%;
+  width: 220px;
   height: 180px;
+  border-radius: 12px;
 }
 
 .card__badge {
@@ -87,4 +87,67 @@
 
 .card__rating i.filled {
   color: #f00;
+}
+
+@media only screen and (min-width: 1280px) {
+  .card {
+    max-width: 220px;
+  }
+}
+ */
+
+.card {
+  display: flex;
+  width: 178px;
+  height: 100%;
+  gap: 16px;
+  border: 1px solid red;
+  background: red;
+}
+
+.card__image__wrapper {
+  text-decoration: none;
+}
+
+.card__image__wrapper img {
+  border-radius: 12px;
+  width: 100%;
+  height: auto;
+}
+
+.card__footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+  line-height: 17px;
+  gap: 8px;
+  margin-top: 16px;
+  color: var(--text-dark-200);
+}
+
+.card__footer span {
+  font-family: "Silka Medium", sans-serif;
+}
+
+.card__price {
+  display: flex;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.card__compare__price {
+  text-decoration: line-through;
+  color: var(--text-dark-100);
+}
+
+@media only screen and (min-width: 1280px) {
+  .card {
+    width: 220px;
+  }
+
+  .card__footer {
+    font-size: 20px;
+  }
 }

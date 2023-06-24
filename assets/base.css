@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Silka";
-  src: url("./silka-regular.woff") format("woff");
+  src: url("./_silka-regular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: "Silka Medium";
-  src: url("./silka-medium.woff") format("woff");
+  src: url("./_silka-medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -16,7 +16,7 @@
 
 @font-face {
   font-family: "Above the Beyond Serif";
-  src: url("./above-the-beyond-serif.woff") format("woff");
+  src: url("./_above-the-beyond-serif.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
